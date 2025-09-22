@@ -1,26 +1,41 @@
 <!doctype html>
 <html lang="en">
 <head>
+  <link rel="stylesheet" href="css/style.css">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Working Out - Home</title>
 </head>
 <body>
-  <header>
-    <h1>My Guide to Working Out</h1>
-    <nav>
-      <a href="page2.html">See My Favorite Workouts</a>
-    </nav>
+  <header id="site-header" class="site-header">
+    <div class="header-inner">
+      <h1 class="site-title">My Guide to Working Out</h1>
+      <nav class="site-nav" aria-label="Main navigation">
+        <a class="nav-link" href="page2.html">See My Favorite Workouts</a>
+      </nav>
+    </div>
   </header>
 
   <main>
-    <section>
+    <section id="intro" class="card">
       <h2>Why I Love Working Out</h2>
       <p>Working out helps me stay healthy, get stronger, and keep my energy up for baseball and school.</p>
       <p>Consistency is key — even on busy days, I try to move my body and stay active.</p>
+      <p class="assignment">Now it’s time to bring that website to life with style. You’ll work with both traditional CSS rules and Flexbox-based layout techniques to improve your site’s appearance and readability.
+
+      This assignment mirrors a critical step in your final project workflow. Just like in your final project, you’ll:
+
+      <ul>
+        <li>Write custom CSS in a separate stylesheet</li>
+        <li>Use classes and IDs to style specific content</li>
+        <li>Apply Flexbox to create structure and spacing</li>
+        <li>Maintain clean folder structure and commit history</li>
+      </ul>
+
+      By the end of this assignment, you'll have a beautiful, readable, and functional website.</p>
     </section>
 
-    <section>
+    <section class="card">
       <h2>Benefits of Exercise</h2>
       <ul>
         <li>Builds muscle and strength</li>
@@ -35,11 +50,13 @@
         <li>Cool down and stretch</li>
       </ol>
 
-      <img src="images/workout.jpg" alt="Person lifting dumbbells" width="600">
+      <div class="hero">
+        <img class="hero-image" src="images/workout.jpg" alt="Person lifting dumbbells">
+      </div>
     </section>
   </main>
 
-  <footer>
+  <footer id="site-footer" class="site-footer">
     <p>Learn more: <a href="page2.html">Check out my favorite workouts</a></p>
   </footer>
 </body>
