@@ -14,19 +14,26 @@ h1, h2, h3 {
 p {
   line-height: 1.6;
   text-align: left;
-  margin: 10px 20px;
+  margin: 10px 0;
 }
 
 /* ===== Flexbox Layout ===== */
 .flex-container {
   display: flex;
-  justify-content: space-around;
+  justify-content: center; /* center sections horizontally */
   align-items: flex-start;
-  gap: 20px;
+  gap: 40px; /* spacing between sections */
   margin: 20px;
+  flex-wrap: wrap; /* allow wrapping on smaller screens */
 }
 
-/* ===== Classes & IDs ===== */
+/* Limit section width for readability */
+.flex-container section {
+  max-width: 500px; /* keeps text readable */
+  flex: 1; /* allows sections to stretch a bit on larger screens */
+}
+
+/* ===== Section Styling ===== */
 .section-title {
   color: #0077cc;
   font-size: 1.5rem;
@@ -35,33 +42,74 @@ p {
 
 .main-paragraph {
   font-style: italic;
+  margin-bottom: 15px; /* spacing below paragraphs */
 }
 
 .main-list {
   margin-left: 20px;
+  margin-bottom: 15px; /* spacing below lists */
 }
 
 #why-workout {
   background-color: #ffffff;
-  padding: 10px;
+  padding: 15px;
   border-radius: 10px;
 }
 
 #benefits {
   background-color: #e8f0fe;
-  padding: 10px;
+  padding: 15px;
   border-radius: 10px;
 }
 
 #top-workouts {
   background-color: #ffffff;
-  padding: 10px;
+  padding: 15px;
   border-radius: 10px;
   margin-bottom: 20px;
 }
 
 #workout-tips {
   background-color: #e8f0fe;
-  padding: 10px;
+  padding: 15px;
   border-radius: 10px;
+}
+
+/* ===== Hero Image Styling ===== */
+.hero {
+  text-align: center; /* center the image */
+}
+
+.hero-image {
+  width: 100%; /* fit within the section */
+  height: auto; /* maintain aspect ratio */
+  display: block;
+  margin: 20px 0;
+  border-radius: 10px;
+}
+
+/* ===== Headings & Paragraph Spacing ===== */
+h2, h3 {
+  margin-top: 15px;
+  margin-bottom: 10px;
+}
+
+p, ul, ol {
+  margin-bottom: 15px;
+}
+
+/* ===== Responsive Design ===== */
+@media screen and (max-width: 768px) {
+  .flex-container {
+    flex-direction: column; /* stack sections vertically on small screens */
+    align-items: center;
+  }
+
+  .flex-container section {
+    max-width: 90%; /* almost full width for readability */
+  }
+
+  .hero-image {
+    max-width: 100%; /* responsive image */
+  }
 }
