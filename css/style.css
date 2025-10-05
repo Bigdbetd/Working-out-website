@@ -1,115 +1,109 @@
+/* ===========================
+   style.css — Refactored for Bootstrap
+   - Bootstrap handles layout (grid, spacing, buttons)
+   - Commented out previous redundant layout rules (flexbox)
+   - Kept project-specific colors, fonts, small custom tweaks
+   =========================== */
+
+/* ===== Variables / Brand colors ===== */
+:root {
+  --brand-primary: #0d6efd;
+  --accent: #0077cc;
+  --bg: #f5f5f5;
+  --card-radius: 10px;
+  --card-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+  --body-font: Arial, sans-serif;
+}
+
 /* ===== Body & Global Styles ===== */
 body {
-  background-color: #f5f5f5;
-  font-family: Arial, sans-serif;
+  background-color: var(--bg);
+  font-family: var(--body-font);
   color: #333;
   margin: 0;
   padding: 0;
 }
 
+/* Headings */
 h1, h2, h3 {
   text-align: center;
 }
 
+/* Keep the larger intro look from Bootstrap, but add custom header color */
+.my-custom-heading {
+  font-weight: 700;
+  color: var(--brand-primary);
+}
+
+/* Headings & paragraph spacing */
 p {
   line-height: 1.6;
-  text-align: left;
   margin: 10px 0;
 }
 
-/* ===== Flexbox Layout ===== */
-.flex-container {
-  display: flex;
-  justify-content: center; /* center sections horizontally */
-  align-items: flex-start;
-  gap: 40px; /* spacing between sections */
-  margin: 20px;
-  flex-wrap: wrap; /* allow wrapping on smaller screens */
-}
-
-/* Limit section width for readability */
-.flex-container section {
-  max-width: 500px; /* keeps text readable */
-  flex: 1; /* allows sections to stretch a bit on larger screens */
-}
-
-/* ===== Section Styling ===== */
 .section-title {
-  color: #0077cc;
-  font-size: 1.5rem;
-  margin-bottom: 10px;
+  color: var(--accent);
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
 }
 
+/* Custom paragraph and list styles retained */
 .main-paragraph {
   font-style: italic;
-  margin-bottom: 15px; /* spacing below paragraphs */
-}
-
-.main-list {
-  margin-left: 20px;
-  margin-bottom: 15px; /* spacing below lists */
-}
-
-#why-workout {
-  background-color: #ffffff;
-  padding: 15px;
-  border-radius: 10px;
-}
-
-#benefits {
-  background-color: #e8f0fe;
-  padding: 15px;
-  border-radius: 10px;
-}
-
-#top-workouts {
-  background-color: #ffffff;
-  padding: 15px;
-  border-radius: 10px;
-  margin-bottom: 20px;
-}
-
-#workout-tips {
-  background-color: #e8f0fe;
-  padding: 15px;
-  border-radius: 10px;
-}
-
-/* ===== Hero Image Styling ===== */
-.hero {
-  text-align: center; /* center the image */
-}
-
-.hero-image {
-  width: 100%; /* fit within the section */
-  height: auto; /* maintain aspect ratio */
-  display: block;
-  margin: 20px 0;
-  border-radius: 10px;
-}
-
-/* ===== Headings & Paragraph Spacing ===== */
-h2, h3 {
-  margin-top: 15px;
-  margin-bottom: 10px;
-}
-
-p, ul, ol {
   margin-bottom: 15px;
 }
 
-/* ===== Responsive Design ===== */
-@media screen and (max-width: 768px) {
-  .flex-container {
-    flex-direction: column; /* stack sections vertically on small screens */
-    align-items: center;
-  }
+.main-list {
+  margin-left: 1rem;
+  margin-bottom: 15px;
+}
 
-  .flex-container section {
-    max-width: 90%; /* almost full width for readability */
-  }
+/* ===== Cards (project-specific styling) ===== */
+.card-workout {
+  border-radius: var(--card-radius);
+  box-shadow: var(--card-shadow);
+  overflow: hidden;
+}
 
-  .hero-image {
-    max-width: 100%; /* responsive image */
+/* Hero image tweaks */
+.hero-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+/* ===== Accessibility tweaks & small utility overrides ===== */
+/* ensure nav-link focus is visible */
+.navbar .nav-link:focus {
+  outline: 3px solid rgba(13,110,253,0.2);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* ===== Commented out (redundant with Bootstrap) =====
+   The following rules were used previously. They are left here
+   commented so you can see what was refactored out — Bootstrap
+   provides grid, spacing, and button styles already.
+
+.flex-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 40px;
+  margin: 20px;
+  flex-wrap: wrap;
+}
+
+.flex-container section {
+  max-width: 500px;
+  flex: 1;
+}
+*/
+
+/* ===== Responsive (keep only useful small tweaks) ===== */
+@media screen and (max-width: 576px) {
+  .main-paragraph {
+    font-size: 0.95rem;
   }
 }
