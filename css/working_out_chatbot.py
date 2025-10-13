@@ -1,6 +1,10 @@
 import random
 
-# workout schedule dictionary
+# ---------------------------
+# Data
+# ---------------------------
+
+# Workout schedule for each day
 workout_schedule = {
     "monday": "Chest and Triceps",
     "tuesday": "Shoulders",
@@ -11,7 +15,7 @@ workout_schedule = {
     "sunday": "Legs"
 }
 
-# list of encouragement phrases
+# Encouragement messages
 encouragements = [
     "Good job showing up today.",
     "You are getting stronger every day.",
@@ -20,35 +24,85 @@ encouragements = [
     "You are making progress, keep going."
 ]
 
-workout_count = 0
+# Track workouts per day
+workout_log = {
+    "monday": 0,
+    "tuesday": 0,
+    "wednesday": 0,
+    "thursday": 0,
+    "friday": 0,
+    "saturday": 0,
+    "sunday": 0
+}
+
+# ---------------------------
+# Functions
+# ---------------------------
 
 def get_workout(day):
-    # looks up the workout for the given day
-    return workout_schedule.get(day.lower(), "That is not a valid day. Try again.")
+    """Return the workout for the given day"""
+    return workout_schedule.get(day.lower(), None)
 
 def get_encouragement():
-    # picks a random encouragement from the list
+    """Return a random encouragement message"""
     return random.choice(encouragements)
 
+def track_workout(day):
+    """Increase workout count for the day if not rest day"""
+    if "Rest" not in workout_schedule[day]:
+        workout_log[day] += 1
+        return True
+    return False
+
+def show_summary(name):
+    """Print the weekly workout summary"""
+    total = sum(workout_log.values())
+    print(f"\n{name}, here's your weekly workout summary:")
+    for day, count in workout_log.items():
+        print(f"{day.title()}: {count} workout(s)")
+    print(f"Total workouts this week: {total}")
+    print("Keep it up!")
+
 def main():
-    global workout_count
+    """Main chatbot loop"""
     print("Welcome to your Workout Companion Chatbot!")
-    name = input("What is your name? ")
-    print("Hello " + name + ". Type 'quit' anytime to stop.")
+    name = input("What is your name? ").strip()
+    print(f"Hello {name}! Type 'quit' anytime to stop or 'schedule' to see the weekly plan.\n")
 
     while True:
-        day = input("What day is it today? ")
-        if day.lower() == "quit":
-            print("You worked out " + str(workout_count) + " times this week. Goodbye " + name + "!")
+        day_input = input("What day is it today? ").strip().lower()
+
+        # Quit the chatbot
+        if day_input == "quit":
+            show_summary(name)
+            print(f"Goodbye {name}!")
             break
 
-        workout = get_workout(day)
-        print("Today's workout: " + workout)
+        # Show full weekly schedule
+        if day_input == "schedule":
+            print("\nWeekly Workout Schedule:")
+            for d, w in workout_schedule.items():
+                print(f"{d.title()}: {w}")
+            print("")
+            continue
 
-        if "Rest" not in workout:
-            workout_count += 1
+        # Validate day input
+        if day_input not in workout_schedule:
+            print("Invalid day. Try again or type 'schedule' to see all days.\n")
+            continue
+
+        # Show today's workout
+        workout = get_workout(day_input)
+        print(f"Today's workout: {workout}")
+
+        # Track workout and give encouragement
+        if track_workout(day_input):
             print(get_encouragement())
         else:
-            print("Enjoy your rest day.")
+            print("Enjoy your rest day!\n")
 
-main()
+# ---------------------------
+# Run Chatbot
+# ---------------------------
+if __name__ == "__main__":
+    main()
